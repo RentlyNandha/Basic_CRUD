@@ -1,0 +1,19 @@
+<h1>This is a New Player page</h1>
+<%if flash[:errors]%>
+<%flash[:errors].each do |e|%>
+<p><%=e%><p>
+<%end%>
+<%end%>
+<form action="/players" method="post">
+<p>
+<label>First Name</label>
+<input type="text" name="player[first_name]">
+
+</p>
+<p>
+<label>last Name</label>
+<input type="text" name="player[last_name]">
+
+</p>
+<input type="submit" value="create">
+</form>
