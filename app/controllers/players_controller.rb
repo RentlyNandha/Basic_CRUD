@@ -15,6 +15,35 @@ player=Player.new(player_params)
         redirect_back(fallback_location: root_path)
     end
 end
+def show
+@player=Player.find(params[:id])
+end
+def edit
+   @player=Player.find(params[:id])
+end
+def update
+   player=Player.find(params[:id])
+
+   if player.update(player_params)
+       redirect_to root_path
+    else
+       flash[:errors]=player.errors.full_messages
+       redirect_back(fallback_location: root_path)
+   end
+end
+def destroy
+   player=Player.find(params[:id])
+   if player.delete
+       redirect_to root_path
+    else
+       flash[:errors]=player.errors.full_messages
+       redirect_back(fallback_location: root_path)
+   end
+end
+def welcome
+   @player=Player.find(4)
+
+end
 private
 def player_params
 params.require(:player).permit(:first_name,:last_name)
